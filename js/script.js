@@ -1,4 +1,4 @@
-contacts: [
+const contacts = [
     {
         name: 'Michele',
         avatar: '_1',
@@ -16,7 +16,7 @@ contacts: [
             },
             {
                 date: '10/01/2020 16:15:22',
-                message: 'Tutto fatto!',
+                message: 'Tutto fatto! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
                 status: 'received'
             }
         ],
@@ -161,3 +161,18 @@ contacts: [
         ],
     }
 ]
+
+
+
+
+
+const { createApp } = Vue;
+
+
+createApp({
+    data() {
+        return {
+            contacts: contacts
+        }
+    }
+}).mount('#app');
