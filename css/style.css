@@ -1,0 +1,44 @@
+:root {
+    --background-up-height: 10vh;
+    --main-left-width: 35%;
+}
+
+
+#background-up {
+    height: var(--background-up-height);
+    width: 100%;
+    background-color: #009688;
+}
+
+#background-down {
+    height: calc(100vh - var(--background-up-height));
+    width: 100%;
+    background-color: #dadbd4;
+}
+
+main {
+    position: absolute;
+    height: 95%;
+    width: 80%;
+    background-color: black;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+}
+
+#main-left {
+    width: var(--main-left-width);
+    min-width: 350px;
+    max-width: 500px;
+    height: 100%;
+    background-color: red;
+}
+
+#main-right {
+    width: 100%;
+    height: 100%;
+    background-color: yellowgreen;
+}
