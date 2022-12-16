@@ -172,7 +172,8 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            contacts: contacts
+            contacts: contacts,
+            contanctSelected : 0
         }
     }
 }).mount('#app');

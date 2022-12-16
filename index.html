@@ -26,11 +26,23 @@
             <div id="background-down"></div>
             <main>
                 <section id="main-left">
-                    <header class="d-flex align-items-center">
-                        <img src="./img/avatar_io.jpg" alt="my profile pic" class="round-img">
+                    <header class="d-flex align-items-center justify-content-between bg-gray">
+                        <div class="">
+                            <img src="./img/avatar_io.jpg" alt="my profile pic" class="round-img">
+                            <span class="name-contact">Sebastiano</span>
+                        </div>
+                        <div class="pe-3 text-gray">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <i class="fa-solid fa-message px-3"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
                     </header>
-                    <div id="notification">
-                        notifiche
+                    <div id="notification" class="d-flex align-items-center">
+                        <div class="round-img d-flex align-items-center justify-content-center"><i class="fa-solid fa-bell-slash"></i></div>
+                        <div>
+                            <span class="">Ricevi notifiche di nuovi messaggi</span> <br>
+                            <a class="font-size-small">Attiva notifiche Desktop</a> 
+                        </div>
                     </div>
                     <div id="search">   
                         cerca
@@ -41,10 +53,10 @@
                                 <img :src=" './img/avatar' + contact.avatar + '.jpg'" alt="" class="round-img">
                                 <div class="overflow-hidden w-100">
                                     <span class="name-contact">{{contact.name}}</span> <br>
-                                    <span class="last-message text-truncate">{{contact.messages[contact.messages.length-1].message}}</span>
+                                    <span class="last-message text-truncate text-gray font-size-small">{{contact.messages[contact.messages.length-1].message}}</span>
                                 </div>
                                 <div class="h-75">
-                                    <span class="time-last-message px-2">{{contact.messages[contact.messages.length-1].date.substring(11,16)}}</span>
+                                    <span class="time-last-message px-2 text-gray font-size-small">{{contact.messages[contact.messages.length-1].date.substring(11,16)}}</span>
                                 </div>
                             </li>
                         </ul>
@@ -54,13 +66,24 @@
                 </section>
 
                 <section id="main-right">
-                    <header>
-                        profilo contatto
+                    <header class="d-flex align-items-center justify-content-between bg-gray">
+                        <div class="d-flex align-items-center">
+                            <img :src=" './img/avatar' + contacts[contanctSelected].avatar + '.jpg'" alt="my profile pic" class="round-img">
+                            <div>
+                                <span class="name-contact">{{contacts[contanctSelected].name}}</span> <br>
+                                <span class="last-acces font-size-small text-gray">Oggi alle 12:00</span> 
+                            </div>
+                        </div>
+                        <div class="pe-3 text-gray">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip px-3"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
                     </header>
                     <div id="chat">
                         chat
                     </div>
-                    <div id="new-message">
+                    <div id="new-message" class="bg-gray">
                         scrivi messaggio
                     </div>
 
