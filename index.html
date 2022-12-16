@@ -38,7 +38,8 @@
                         </div>
                     </header>
                     <div id="notification" class="d-flex align-items-center">
-                        <div class="round-img d-flex align-items-center justify-content-center"><i class="fa-solid fa-bell-slash"></i></div>
+                        <div class="round-img d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-bell-slash"></i></div>
                         <div>
                             <span class="">Ricevi notifiche di nuovi messaggi</span> <br>
                             <a class="font-size-small">Attiva notifiche Desktop</a> 
@@ -49,14 +50,19 @@
                     </div>
                     <div id="contacts-list">
                         <ul class="list-unstyled">
-                            <li v-for="contact in contacts" class="contact">
+                            <li v-for="contact in contacts" class="contact" @click="contanctSelected = contact.avatar.substring(1,2) - 1"
+                            :class="(contact.avatar.substring(1,2) - 1 == contanctSelected ? 'contact-selected' : '')">
                                 <img :src=" './img/avatar' + contact.avatar + '.jpg'" alt="" class="round-img">
                                 <div class="overflow-hidden w-100">
                                     <span class="name-contact">{{contact.name}}</span> <br>
-                                    <span class="last-message text-truncate text-gray font-size-small">{{contact.messages[contact.messages.length-1].message}}</span>
+                                    <span class="last-message text-truncate text-gray font-size-small">
+                                        {{contact.messages[contact.messages.length-1].message}}
+                                    </span>
                                 </div>
                                 <div class="h-75">
-                                    <span class="time-last-message px-2 text-gray font-size-small">{{contact.messages[contact.messages.length-1].date.substring(11,16)}}</span>
+                                    <span class="time-last-message px-2 text-gray font-size-small">
+                                        {{contact.messages[contact.messages.length-1].date.substring(11,16)}}
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -80,8 +86,21 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </header>
-                    <div id="chat">
-                        chat
+                    <div id="chat" class="p-3">
+                        <ul class="list-unstyled">
+                            <li v-for="messageElem in contacts[contanctSelected].messages" class="d-flex py-1 px-5"
+                            :class="(messageElem.status=='sent' ? 'justify-content-end': 'justify-content-start')">
+                                <div class="chat-message py-1 chat-message d-flex align-items-center justify-content-between" 
+                                :class="(messageElem.status=='sent' ? 'message-sent': 'message-received')">
+                                    <div class="message-text px-2">{{messageElem.message}}</div>
+                                    <div class="message-time align-self-end font-size-small text-gray px-1">{{messageElem.date.substring(11,16)}}</div>
+                                
+                                </div>
+                                
+                                
+                                
+                            </li>
+                        </ul>
                     </div>
                     <div id="new-message" class="bg-gray">
                         scrivi messaggio

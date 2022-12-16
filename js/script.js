@@ -16,7 +16,12 @@ const contacts = [
             },
             {
                 date: '10/01/2020 16:15:22',
-                message: 'Tutto fatto! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                message: 'Tutto fatto!',
+                status: 'received'
+            },
+            {
+                date: '10/01/2020 16:35:22',
+                message: 'adadas das dfa das da da d asd ad asd asd a d asdasdasdas dad d asd ad ada d adadasd asd a dadadasda adasd adasd asd ad ad ad as das da dadada dadad asdadad asd',
                 status: 'received'
             }
         ],
@@ -173,7 +178,8 @@ createApp({
     data() {
         return {
             contacts: contacts,
-            contanctSelected : 0
+            contanctSelected : 0,
+            prova : 0
         }
     }
 }).mount('#app');

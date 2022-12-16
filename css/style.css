@@ -111,6 +111,10 @@ span.name-contact {
     font-weight: bold;
 }
 
+.contact-selected {
+    background-color: #e9ebeb;
+}
+
 
 
 /* MAIN RIGHT   */
@@ -136,4 +140,19 @@ span.name-contact {
 #new-message{
     width: 100%;
     height: 80px;
+}
+
+/* chat */
+.chat-message {
+    border-radius: 9px;
+    min-width: 250px;
+    max-width: 65%;
+}
+
+.message-sent {
+    background-color: #d5f9ba;
+}
+
+.message-received {
+    background-color: #ffffff;
 }
