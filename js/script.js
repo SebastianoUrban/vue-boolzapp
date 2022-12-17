@@ -180,7 +180,8 @@ createApp({
             contacts: contacts,
             contanctSelected : 0,
             prova : 0,
-            textNewMessage : ''
+            textNewMessage : '',
+            nameSearched : ''
         }
     },
     methods: {
@@ -193,7 +194,25 @@ createApp({
                 };
                 this.contacts[this.contanctSelected].messages.push(newMessage);
                 this.textNewMessage = '';
+                setTimeout(() => {
+                    const newMessageReplay = {
+                        date: '10/01/2020 15:30:55',
+                        message: 'ok',
+                        status: 'received'
+                    };
+                    this.contacts[this.contanctSelected].messages.push(newMessageReplay);
+                }, 1000);
+            }
+        },
+        searchName() { 
+            for (let i=0; i<this.contacts.length; i++) {
+                if ( !(this.contacts[i].name.toLowerCase().includes(this.nameSearched)) ) {
+                    this.contacts[i].visible = false;
+                } else {
+                    this.contacts[i].visible = true;
+                }
             }
         }
     }
 }).mount('#app');
+
