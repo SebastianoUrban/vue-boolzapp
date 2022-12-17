@@ -179,7 +179,15 @@ createApp({
         return {
             contacts: contacts,
             contanctSelected : 0,
-            prova : 0
+            prova : 0,
+            textNewMessage : ''
+        }
+    },
+    methods: {
+        addMessage() { 
+            if (this.textNewMessage != '') {
+                
+            }
         }
     }
 }).mount('#app');
