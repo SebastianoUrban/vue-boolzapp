@@ -186,7 +186,13 @@ createApp({
     methods: {
         addMessage() { 
             if (this.textNewMessage != '') {
-                
+                const newMessage = {
+                    date: '10/01/2020 15:30:55',
+                    message: this.textNewMessage,
+                    status: 'sent'
+                };
+                this.contacts[this.contanctSelected].messages.push(newMessage);
+                this.textNewMessage = '';
             }
         }
     }

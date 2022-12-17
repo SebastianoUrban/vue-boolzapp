@@ -2,6 +2,7 @@
     --background-up-height: 10vh;
     --main-left-width: 400px;
     --row-main-height: 80px;
+    --row-write-message: 50px;
     --size-round-img: 50px;
     --notification-color: #8edafc;
 }
@@ -50,6 +51,8 @@ main {
     height: 95%;
     width: 80%;
     background-color: black;
+    border-radius: 10px;
+    overflow: hidden;
 
     top: 50%;
     left: 50%;
@@ -133,14 +136,11 @@ span.name-contact {
 
 #chat{
     width: 100%;
-    height: 100%;
+    height: calc(100% - var(--row-main-height) - var(--row-write-message));
     background-image: url(../img/mine.jpg);
 }
 
-#new-message{
-    width: 100%;
-    height: 80px;
-}
+
 
 /* chat */
 .chat-message {
@@ -155,4 +155,18 @@ span.name-contact {
 
 .message-received {
     background-color: #ffffff;
+}
+
+/* new message */
+
+#new-message{
+    width: 100%;
+    height: var(--row-write-message);
+}
+#user-message {
+    width: 80%;
+    height: 60%;
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px;
 }

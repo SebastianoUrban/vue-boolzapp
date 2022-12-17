@@ -94,7 +94,6 @@
                                 :class="(messageElem.status=='sent' ? 'message-sent': 'message-received')">
                                     <div class="message-text px-2">{{messageElem.message}}</div>
                                     <div class="message-time align-self-end font-size-small text-gray px-1">{{messageElem.date.substring(11,16)}}</div>
-                                
                                 </div>
                                 
                                 
@@ -102,8 +101,11 @@
                             </li>
                         </ul>
                     </div>
-                    <div id="new-message" class="bg-gray">
-                        scrivi messaggio
+                    <div id="new-message" class="bg-gray d-flex align-items-center justify-content-around">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" name="user-message" id="user-message" placeholder="Scrivi un messaggio" 
+                        v-model="textNewMessage" @keyup.enter="addMessage()">
+                        <i class="fa-solid fa-microphone"></i>
                     </div>
 
                 </section>
