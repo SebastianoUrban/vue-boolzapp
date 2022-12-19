@@ -20,7 +20,7 @@ const contacts = [
                 status: 'received'
             },
             {
-                date: '10/01/2020 16:35:22',
+                date: '19/12/2022 10:35:22',
                 message: 'adadas das dfa das da da d asd ad asd asd a d asdasdasdas dad d asd ad ada d adadasd asd a dadadasda adasd adasd asd ad ad ad as das da dadada dadad asdadad asd',
                 status: 'received'
             }
@@ -169,6 +169,24 @@ const contacts = [
 
 const DateTime = luxon.DateTime;
 
+function dateToIsoForm (string) {
+    const output = `${string.substring(6,10)}-${string.substring(3,5)}-${string.substring(0,2)}T${string.substring(11.19)}`
+    return output;
+}
+
+function diffDate(date1, date2) {
+    const date1Conv = luxon.DateTime.fromISO(date1);
+    const date2Conv = luxon.DateTime.fromISO(date2);
+
+    const diff = date1Conv.diff(date2Conv, ["days", "hours", "minutes", "seconds"]);
+    return diff.values;
+}
+
+
+
+
+//console.log(diffDate(contacts[0].messages[2].date, contacts[0].messages[3].date).minutes);
+//console.log(DateTime.now().toISO().substring(0,19));
 
 
 const { createApp } = Vue;
@@ -188,7 +206,7 @@ createApp({
         addMessage() { 
             if (this.textNewMessage != '') {
                 const newMessage = {
-                    date: '10/01/2020 15:30:55',
+                    date: DateTime.now().toFormat("dd/MM/yyyy hh:mm:ss"),
                     message: this.textNewMessage,
                     status: 'sent'
                 };
@@ -196,7 +214,7 @@ createApp({
                 this.textNewMessage = '';
                 setTimeout(() => {
                     const newMessageReplay = {
-                        date: '10/01/2020 15:30:55',
+                        date: DateTime.now().toFormat("dd/MM/yyyy hh:mm:ss"),
                         message: 'ok',
                         status: 'received'
                     };
@@ -212,6 +230,39 @@ createApp({
                     this.contacts[i].visible = true;
                 }
             }
+        },
+        lastAcces(contact) {
+            let lastMessage = false;
+            let i = contact.messages.length -1;
+            while (!lastMessage) {
+                if(i==0 || contact.messages[i].status == 'received') {
+                    lastMessage = contact.messages[i].date;
+                } else {
+                    i--;
+                }
+            }
+            const diff = diffDate(DateTime.now().toISO().substring(0,19),  dateToIsoForm(lastMessage));
+            console.log(diff);
+            let output = '';
+            if (diff.days <= 30) {
+                if (diff.hours < 24 && diff.days == 0) {
+                    if (diff.minutes < 60 && diff.hours == 0) {
+                        if (diff.seconds < 60  && diff.minutes == 0) {
+                            output = diff.seconds + ' secondi fa';
+                        } else {
+                            output = diff.minutes + ' minuti fa';
+                        }
+                    } else {
+                        output = diff.hours + ' ore fa';
+                    }
+                } else {
+                    output = diff.days + ' giorni fa';
+                }
+            } else {
+                output = lastMessage.substring(0,10);
+            }
+        
+            return output;
         }
     }
 }).mount('#app');

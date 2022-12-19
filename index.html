@@ -58,8 +58,8 @@
                         <ul class="list-unstyled">
                             <li v-for="contact in contacts" class="contact" 
                             @click="contanctSelected = contact.avatar.substring(1,2) - 1"
-                            :class="(contact.visible ? 'd-flex' : 'd-none')"
-                            :class="(contact.avatar.substring(1,2) - 1 == contanctSelected ? 'contact-selected': )">
+                            :class="(contact.visible ? 'd-flex' : 'd-none') + ' ' +
+                            (contact.avatar.substring(1,2) - 1 == contanctSelected ? 'contact-selected': '')">
                                 <img :src=" './img/avatar' + contact.avatar + '.jpg'" alt="" class="round-img">
                                 <div class="overflow-hidden w-100">
                                     <span class="name-contact">{{contact.name}}</span> <br>
@@ -86,7 +86,7 @@
                             <img :src=" './img/avatar' + contacts[contanctSelected].avatar + '.jpg'" alt="my profile pic" class="round-img">
                             <div>
                                 <span class="name-contact">{{contacts[contanctSelected].name}}</span> <br>
-                                <span class="last-acces font-size-small text-gray">Oggi alle 12:00</span> 
+                                <span class="last-acces font-size-small text-gray">{{lastAcces(contacts[contanctSelected])}}</span> 
                             </div>
                         </div>
                         <div class="pe-3 text-gray">
